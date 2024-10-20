@@ -25,7 +25,7 @@ class Register {
 
     async Sign_in_User(req,res) {
       try {
-        console.log('Начало выполнения запроса');
+        console.log('Начало выполнения запрос');
         
         const query = `SELECT * FROM users WHERE email = $1 `;
         const values = [req.body.email];
@@ -35,10 +35,15 @@ class Register {
           return { success: false, message: 'Пользователь не найден' };
         }
         
+        if (ress.password === req.body.password) {
+          return { success: true, message: 'Пользователь найден' };
+        } else {
+          return { success: false, message: 'Неверный пароль' };
+        }
         
 
         console.log(ress.id);
-        console.log(req.body.password);
+        console.log(req.body.email);
       }
        catch (error) {
       console.error('Ошибка в запросе к базе данных:', error);
