@@ -25,7 +25,7 @@ class Register {
 
     async Sign_in_User(req,res) {
       try {
-        console.log('Начало выполнения запрос');
+        console.log('Начало выполнения запроса');
         
         const query = `SELECT * FROM users WHERE email = $1 `;
         const values = [req.body.email];
